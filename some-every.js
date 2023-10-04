@@ -19,7 +19,8 @@ Examples:
 */
 
 function hasAZero(num) {
-    return Array.from(num).some(num => num === 0);
+    let numArray = String(num).split('').map(num => parseInt(num));
+      return numArray.some(num => num === 0);
 }
 
 /*
@@ -42,7 +43,13 @@ Examples:
     hasNoDuplicates([1,2,3]) // true
 */
 
-function hasNoDuplicates(arr) {}
+function hasNoDuplicates(arr) {
+    let copy = [...arr];
+  return arr.every((num,ind)=>
+    !(copy.includes(num,(ind-1))&&copy.includes(num,(ind+1)))
+  );
+  }
+  
 
 /*
 Write a function called hasCertainKey which accepts an array of objects and a key, and returns true if every single object in the array contains that key. Otherwise it should return false.
