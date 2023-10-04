@@ -44,11 +44,12 @@ Examples:
 */
 
 function hasNoDuplicates(arr) {
-    let copy = [...arr];
-  return arr.every((num,ind)=>
-    !(copy.includes(num,(ind-1))&&copy.includes(num,(ind+1)))
-  );
-  }
+    return arr.every((num,ind)=>{
+      let before = arr.slice(0, ind);
+      let after = arr.slice(ind+1);
+    return !(before.includes(num) || after.includes(num))
+    });
+}
   
 
 /*
